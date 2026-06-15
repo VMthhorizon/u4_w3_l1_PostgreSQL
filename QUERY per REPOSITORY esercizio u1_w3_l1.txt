@@ -11,3 +11,13 @@ AND (in_produzione = true OR in_commercio = true);
 Es_5 = SELECT * FROM fatture
 JOIN clienti ON fatture.id_cliente = numero_cliente
 WHERE importo < 1000 
+
+Es_6 = SELECT fatture.*, fornitori.denominazione FROM fatture
+JOIN fornitori USING (numero_fornitore)
+
+Es_7 = SELECT EXTRACT(YEAR FROM data_fattura) AS anno, COUNT(*) AS numero_fatture FROM fatture
+WHERE iva = 20
+GROUP BY EXTRACT(YEAR FROM data_fattura)
+
+Es_8 = SELECT EXTRACT(YEAR FROM data_fattura), COUNT(*) AS numero_fatture , SUM(importo) AS importo_totale FROM fatture
+GROUP BY (EXTRACT(YEAR FROM data_fattura))
