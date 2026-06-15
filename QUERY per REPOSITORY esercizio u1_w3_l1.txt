@@ -2,4 +2,12 @@ Es_1 = SELECT * FROM clienti WHERE nome = 'mario'
 
 Es_2 = SELECT nome, cognome FROM clienti WHERE anno_di_nascita = 1982
 
-Es_3 = SELECT * FROM fatture WHERE importo = 20
+Es_3 = SELECT COUNT(*) FROM fatture WHERE importo = 20;
+
+Es_4 = SELECT data_attivazione FROM prodotti
+WHERE EXTRACT(YEAR FROM data_attivazione) = 2017
+AND (in_produzione = true OR in_commercio = true);
+
+Es_5 = SELECT * FROM fatture
+JOIN clienti ON fatture.id_cliente = numero_cliente
+WHERE importo < 1000 
