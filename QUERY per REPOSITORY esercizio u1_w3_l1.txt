@@ -21,3 +21,15 @@ GROUP BY EXTRACT(YEAR FROM data_fattura)
 
 Es_8 = SELECT EXTRACT(YEAR FROM data_fattura), COUNT(*) AS numero_fatture , SUM(importo) AS importo_totale FROM fatture
 GROUP BY (EXTRACT(YEAR FROM data_fattura))
+
+Es_9 = SELECT EXTRACT(YEAR FROM data_fattura)
+FROM fatture
+WHERE tipologia ILIKE 'td01%'
+
+Es_10 = SELECT clienti.regione_residenza, SUM(importo) AS importo_totale FROM fatture
+JOIN clienti on numero_cliente = fatture.id_cliente
+GROUP BY regione_residenza
+
+Es_11 = SELECT COUNT(*) from clienti 
+JOIN fatture ON id_cliente = clienti.numero_cliente
+WHERE importo > 50 AND clienti.anno_di_nascita = 1980 
