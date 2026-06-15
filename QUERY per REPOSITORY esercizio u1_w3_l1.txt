@@ -1,1 +1,5 @@
-ciao a tutti
+Es_1 = SELECT * FROM clienti WHERE nome = 'mario'
+
+Es_2 = SELECT nome, cognome FROM clienti WHERE anno_di_nascita = 1982
+
+Es_3 = SELECT * FROM fatture WHERE importo = 20
